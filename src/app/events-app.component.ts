@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './user/auth.service';
+import { tap } from '../../node_modules/rxjs/operators';
 
 @Component({
   selector: 'events-app',
@@ -8,5 +10,11 @@ import { Component } from '@angular/core';
   `
 })
 export class EventsAppComponent {
-  title = 'app';
+
+  constructor(private auth: AuthService) {}
+
+  ngOnInit() {
+    this.auth.checkAuthenticationStatus();
+
+  }
 }
