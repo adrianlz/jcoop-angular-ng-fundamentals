@@ -36,7 +36,7 @@ let jQuery = window['$'];
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule 
+    HttpClientModule
   ],
   declarations: [
     EventsAppComponent,

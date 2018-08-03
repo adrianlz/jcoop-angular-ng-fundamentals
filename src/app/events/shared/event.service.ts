@@ -32,10 +32,11 @@ export class EventService {
         return this.http.post<IEvent>('/api/events', event, options);
     }
 
-    private handleError<T> (operation = 'operation', result?:T) {
-        return (error:any):Observable<T> => {
-            console.log(error);
-            return of(result as T);
-        }
+    private handleError<T>(operation = 'operation', result?: T) {
+        return (
+            (error: any): Observable<T> => {
+                console.log(error);
+                return of(result as T);
+            });
     }
 }

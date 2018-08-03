@@ -22,13 +22,6 @@ export class AuthService {
             .pipe(catchError(err => {
                 return of(false);
             }));
-            
-        // this.currentUser = {
-        //     id: 1,
-        //     userName: userName,
-        //     firstName: 'John',
-        //     lastName: 'Papa'
-        // };
     }
 
     isAuthenticated() {
@@ -51,6 +44,16 @@ export class AuthService {
         console.log('auth...updatecurrentUser.', firstName, lastName);
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
+
+        let options = { headers: new HttpHeaders({'Content-type': 'application/json'})};
+
+        return this.http.put(`api/users/${this.currentUser.id}`, this.currentUser, options);
+    }
+
+    logout() {
+        this.currentUser = undefined;
+        let options = { headers: new HttpHeaders({'Content-type': 'application/json'})};
+        return this.http.post('/api/logout', {}, options);
     }
 
 }

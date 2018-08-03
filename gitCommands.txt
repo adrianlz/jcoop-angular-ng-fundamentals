@@ -1,13 +1,17 @@
-git add .
 # Adds the files in the local repository and stages them for commit. To unstage a file, use 'git reset HEAD YOUR-FILE'.
+git add .
 
-git commit -m "First commit"
 # Commits the tracked changes and prepares them to be pushed to a remote repository. To remove this commit and modify the file, use 'git reset --soft HEAD~1' and commit and add the file again.
+git commit -m "First commit"
 
-git remote add origin remote repository URL
 # Sets the new remote
-git remote -v
+git remote add origin remote repository URL
 # Verifies the new remote URL
+git remote -v
 
-git push origin master
 # Pushes the changes in your local repository up to the remote repository you specified as the origin
+git push origin master
+
+#get latest code
+#https://stackoverflow.com/questions/6335681/git-how-do-i-get-the-latest-version-of-my-code
+git pull  origin master

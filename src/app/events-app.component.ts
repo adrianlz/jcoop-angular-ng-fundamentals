@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './user/auth.service';
-import { tap } from '../../node_modules/rxjs/operators';
 
 @Component({
   selector: 'events-app',
@@ -9,7 +8,7 @@ import { tap } from '../../node_modules/rxjs/operators';
     <router-outlet></router-outlet>
   `
 })
-export class EventsAppComponent {
+export class EventsAppComponent implements OnInit {
 
   constructor(private auth: AuthService) {}
 
