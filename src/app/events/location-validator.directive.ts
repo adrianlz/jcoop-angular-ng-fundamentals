@@ -5,7 +5,7 @@ import { Validator, FormGroup, NG_VALIDATORS } from '@angular/forms';
     selector: '[validateLocation]',
     providers: [{ provide: NG_VALIDATORS, useExisting: LocationValidator, multi: true}]
 })
-export class LocationValidator implements Validator { 
+export class LocationValidator implements Validator {
     validate(formGroup: FormGroup): {[key: string]: any} {
         console.log('LocationValidator - validate...', NG_VALIDATORS);
         let addresControl = formGroup.controls['address'];
@@ -14,11 +14,11 @@ export class LocationValidator implements Validator {
 
         let onlineUrlControl = (<FormGroup>formGroup.root).controls['onlineUrl'];
 
-        if((addresControl && addresControl.value && cityControl && cityControl.value && countryControl && countryControl.value) || 
+        if ((addresControl && addresControl.value && cityControl && cityControl.value && countryControl && countryControl.value) ||
             (onlineUrlControl && onlineUrlControl.value)) {
-                return null
+                return null;
         } else {
-            return { validateLocation: true}
+            return { validateLocation: true};
         }
     }
 }

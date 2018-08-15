@@ -32,7 +32,7 @@ export class AuthService {
         this.http.get('/api/currentIdentity')
         .pipe(
             tap(data => {
-                if(data instanceof Object) {
+                if (data instanceof Object) {
                     this.currentUser = <IUser>data;
                 }
             })
