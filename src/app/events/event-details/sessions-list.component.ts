@@ -17,7 +17,7 @@ export class SessionListComponent implements OnInit, OnChanges {
     constructor(private auth: AuthService, private voterService: VoterService) {}
 
     ngOnInit() {
-        console.log('la sessions...', this);
+        console.log('la sessions...');
     }
 
     ngOnChanges() {
@@ -27,6 +27,7 @@ export class SessionListComponent implements OnInit, OnChanges {
                 this.visibleSessions.sort(sortByNameAsc) :
                 this.visibleSessions.sort(sortByVotesDesc);
         }
+        this.visibleSessions.forEach((s) => console.log('ahi...', s.name));
     }
 
     toggleVote(session: ISession) {

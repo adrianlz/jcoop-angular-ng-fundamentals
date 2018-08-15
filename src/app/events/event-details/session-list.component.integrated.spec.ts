@@ -1,5 +1,5 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
+import { DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import { SessionListComponent } from './sessions-list.component';
 import { AuthService } from '../../user/auth.service';
 import {VoterService } from './voter.service';
@@ -16,27 +16,34 @@ describe('SessionListComponent', () => {
         debugEl: DebugElement;
 
     beforeEach(async(() => {
-        let mockAuthService = {};
-        let mockVoterService = {};
+        let mockAuthService = {
+            isAuthenticated: () => true,
+            currentUser: {userName: 'Joe'}
+        };
+        let mockVoterService = {
+            userHasVoted: () => true
+        };
 
         TestBed.configureTestingModule({
             imports: [],
             declarations: [
                 SessionListComponent,
-                UpvoteComponent,
+                // UpvoteComponent,
                 DurationPipe,
-                CollapsibleWellComponent
+                // CollapsibleWellComponent
             ],
             providers: [
                 { provide: AuthService, useValue: mockAuthService },
                 { provide: VoterService, useValue: mockVoterService }
             ],
-            schemas: []
+            schemas: [
+                NO_ERRORS_SCHEMA
+            ]
         });
     }));
 
     beforeEach(() => {
-        TestBed.createComponent(SessionListComponent);
+        fixture = TestBed.createComponent(SessionListComponent);
         component = fixture.componentInstance;
         debugEl = fixture.debugElement;
         element = fixture.nativeElement;
